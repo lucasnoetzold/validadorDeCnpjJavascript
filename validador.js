@@ -11,7 +11,7 @@ window.validaCNPJ = (e => {
 
         cnpj = cnpj.replace(/[^\d]+/g, '').split("");
 
-        return cnpj.length === 14
+        return cnpj.length === 14 && cnpj.join("") != 0
                 && encontraDigito(cnpj, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]) == cnpj[12]
                 && encontraDigito(cnpj, [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]) == cnpj[13];
     };
