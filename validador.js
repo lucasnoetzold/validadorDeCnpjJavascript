@@ -10,8 +10,15 @@ window.validaCNPJ = (e => {
     return cnpj => {
 
         cnpj = cnpj.replace(/[^\d]+/g, '').split("");
+        
+        let rep = 1;
+        cnpj.reduce( ( ac, v ) => {
+            if ( ac == v ) rep++;
+            return v;
+        } );
 
-        return cnpj.length === 14 && cnpj.join("") != 0
+        return cnpj.length === 14
+                && rep < 14
                 && encontraDigito(cnpj, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]) == cnpj[12]
                 && encontraDigito(cnpj, [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]) == cnpj[13];
     };
